@@ -7,7 +7,6 @@ vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true })
 vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { noremap = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { noremap = true })
 
-
 -- Define a highlight group for yanked text
 vim.api.nvim_set_hl(0, 'YankHighlight', { ctermbg = 'yellow', bg = 'yellow' })
 
@@ -217,6 +216,70 @@ require('lazy').setup {
       { "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+    {
+    'neovim/nvim-lspconfig',
+    config = function()
+      local lspconfig = require('lspconfig')
+
+      -- C++ LSP
+      lspconfig.clangd.setup{}
+
+      -- Python LSP
+      lspconfig.pyright.setup{}
+    end
+  },
+
+  -- Completion plugin
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',  -- LSP source for nvim-cmp
+      'hrsh7th/cmp-buffer',    -- Buffer source for nvim-cmp
+      'hrsh7th/cmp-path',      -- Path source for nvim-cmp
+      'hrsh7th/cmp-cmdline',   -- Cmdline source for nvim-cmp
+      'L3MON4D3/LuaSnip',      -- Snippets plugin
+      'saadparwaiz1/cmp_luasnip' -- Snippet source for nvim-cmp
+    },
+    config = function()
+      local cmp = require('cmp')
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+          end,
+        },
+        mapping = {
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-Space>'] = cmp.mapping.complete(),
+        },
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        }, {
+          { name = 'buffer' },
+          { name = 'path' },
+        }),
+      })
+
+      -- Setup for command-line completion
+      cmp.setup.cmdline(':', {
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          { name = 'cmdline' },
+        })
+      })
+
+      cmp.setup.cmdline('/', {
+        sources = cmp.config.sources({
+          { name = 'buffer' }
+        })
+      })
+    end
+  }
 }
 
 -- Set colorscheme and enable syntax highlighting
