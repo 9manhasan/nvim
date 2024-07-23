@@ -65,8 +65,8 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 
 -- Keybinding to toggle NvimTree
-vim.api.nvim_set_keymap('n', '<C-n>', ':Neotree filesystem reveal left<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<C-c>',':Neotree filesystem close<CR>',{})
+vim.api.nvim_set_keymap('n', '<leader>n', ':Neotree filesystem reveal left<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>c',':Neotree filesystem close<CR>',{})
 
 -- Increment and decrement number under cursor
 vim.api.nvim_set_keymap('n', '+', '<C-a>', { noremap = true })
