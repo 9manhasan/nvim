@@ -64,7 +64,7 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 
 -- Keybinding to toggle NvimTree
-vim.api.nvim_set_keymap('n', '<leader>n', ':Neotree filesystem reveal left<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>n', ':Neotree filesystem reveal right<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>c',':Neotree filesystem close<CR>',{})
 
 -- Increment and decrement number under cursor
@@ -96,6 +96,9 @@ require('lazy').setup {
     name = 'catppuccin',
     priority = 1000,
   },
+    {
+        'ThePrimeagen/vim-be-good'
+    },
     {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -309,5 +312,4 @@ vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', 
 vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true, silent = true })
 
 vim.cmd[[highlight Normal guibg=NONE ctermbg=NONE]]
-
 
