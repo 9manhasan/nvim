@@ -240,3 +240,5 @@ vim.api.nvim_set_keymap('n', '<leader>sh', ':sp<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>sc', '<C-w>c', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>so', '<C-w>o', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>sr', '<C-w>r', { noremap = true })
+vim.cmd('colorscheme catppuccin')
+
