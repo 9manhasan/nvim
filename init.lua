@@ -311,5 +311,5 @@ vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true, silent = true })
 
-vim.cmd[[highlight Normal guibg=NONE ctermbg=NONE]]
+--vim.cmd[[highlight Normal guibg=NONE ctermbg=NONE]]
 
