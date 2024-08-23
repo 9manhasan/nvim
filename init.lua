@@ -129,59 +129,6 @@ require('lazy').setup({
       { '<C-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
-  -- Removed LSP-related configuration
-  -- {
-  --   'neovim/nvim-lspconfig',
-  --   config = function()
-  --     local lspconfig = require('lspconfig')
-  --     lspconfig.clangd.setup({})
-  --     lspconfig.pyright.setup({})
-  --   end,
-  -- },
-  -- {
-  --   'hrsh7th/nvim-cmp',
-  --   dependencies = {
-  --     'hrsh7th/cmp-nvim-lsp',
-  --     'hrsh7th/cmp-buffer',
-  --     'hrsh7th/cmp-path',
-  --     'hrsh7th/cmp-cmdline',
-  --     'L3MON4D3/LuaSnip',
-  --     'saadparwaiz1/cmp_luasnip',
-  --   },
-  --   config = function()
-  --     local cmp = require('cmp')
-  --     cmp.setup({
-  --       snippet = {
-  --         expand = function(args)
-  --           require('luasnip').lsp_expand(args.body)
-  --         end,
-  --       },
-  --       mapping = {
-  --         ['<C-p>'] = cmp.mapping.select_prev_item(),
-  --         ['<C-n>'] = cmp.mapping.select_next_item(),
-  --         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  --         ['<C-Space>'] = cmp.mapping.complete(),
-  --       },
-  --       sources = cmp.config.sources({
-  --         { name = 'nvim_lsp' },
-  --         { name = 'luasnip' },
-  --       }, {
-  --         { name = 'buffer' },
-  --         { name = 'path' },
-  --       }),
-  --     })
-  --     cmp.setup.cmdline(':', {
-  --       sources = cmp.config.sources({
-  --         { name = 'path' },
-  --       }, {
-  --         { name = 'cmdline' },
-  --       }),
-  --     })
-  --     cmp.setup.cmdline('/', {
-  --       sources = { { name = 'buffer' } },
-  --     })
-  --   end,
-  -- },
 })
 
 -- Basic settings
