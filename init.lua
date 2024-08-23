@@ -169,7 +169,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Save file shortcuts
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>wq', ':w<CR>', { noremap = true })
 
 --will use noetree
 vim.api.nvim_set_keymap('n', '<leader>n', ':Neotree reveal<CR>', { noremap = true, silent = true })
@@ -188,4 +188,4 @@ vim.api.nvim_set_keymap('n', '<leader>sc', '<C-w>c', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>so', '<C-w>o', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>sr', '<C-w>r', { noremap = true })
 vim.cmd('colorscheme catppuccin')
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>t', ':term<CR>', { noremap = true, silent = true })
