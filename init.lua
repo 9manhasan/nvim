@@ -167,4 +167,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Set colorscheme
+-- (it works[test])
