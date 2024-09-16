@@ -1,10 +1,10 @@
-# Neovim Configuration
-```markdown
+# Neovim Configuration Documentation
+
 ## Installation
 
 Clone the repository with the following command:
 
-bash
+```bash
 git clone https://github.com/9manhasan/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
 ```
 
@@ -21,19 +21,19 @@ git clone https://github.com/9manhasan/nvim.git "${XDG_CONFIG_HOME:-$HOME/.confi
 #### NvimTree (File Explorer)
 
 | Keybinding  | Action                | Description                      |
-| ----------- | --------------------- | -------------------------------- |
+|-------------|---------------------- |----------------------------------|
 | `<Leader>e` | `:NvimTreeToggle<CR>` | Toggle the file explorer sidebar |
 
 **Usage:** Press `<Space>e` to open or close the file explorer. Use it to navigate your project structure, open files, and perform file operations.
 
 #### Telescope (Fuzzy Finder)
 
-| Keybinding | Action                      | Description                             |
-|------------|-----------------------------|-----------------------------------------|
-| `<Leader>sf` | `:Telescope find_files<CR>` | Search for files in your project        |
-| `<Leader>sg` | `:Telescope live_grep<CR>` | Search for a string in your project     |
-| `<Leader>sb` | `:Telescope buffers<CR>`   | List open buffers                       |
-| `<Leader>p` | `:Telescope projects<CR>`   | List and switch between projects        |
+| Keybinding    | Action                      | Description                             |
+|---------------|-----------------------------|-----------------------------------------|
+| `<Leader>sf`  | `:Telescope find_files<CR>` | Search for files in your project        |
+| `<Leader>sg`  | `:Telescope live_grep<CR>`  | Search for a string in your project     |
+| `<Leader>sb`  | `:Telescope buffers<CR>`    | List open buffers                       |
+| `<Leader>p`   | `:Telescope projects<CR>`   | List and switch between projects        |
 
 **Usage:**
 - Press `<Space>sf` to quickly find and open files in your project.
@@ -43,9 +43,9 @@ git clone https://github.com/9manhasan/nvim.git "${XDG_CONFIG_HOME:-$HOME/.confi
 
 ### Git Integration
 
-| Keybinding | Action          | Description                          |
-|------------|-----------------|--------------------------------------|
-| `<Leader>lg` | `:LazyGit<CR>` | Open LazyGit interface               |
+| Keybinding    | Action          | Description                          |
+|---------------|-----------------|--------------------------------------|
+| `<Leader>lg`  | `:LazyGit<CR>`  | Open LazyGit interface               |
 
 **Usage:** Press `<Space>lg` to open the LazyGit interface, which provides a user-friendly way to manage Git operations.
 
@@ -53,13 +53,13 @@ git clone https://github.com/9manhasan/nvim.git "${XDG_CONFIG_HOME:-$HOME/.confi
 
 #### Split Windows
 
-| Keybinding | Action        | Description                        |
-|------------|---------------|------------------------------------|
-| `<Leader>sv` | `:vsp<CR>`   | Split window vertically            |
-| `<Leader>sh` | `:sp<CR>`    | Split window horizontally          |
-| `<Leader>sc` | `<C-w>c`    | Close the current split window     |
-| `<Leader>so` | `<C-w>o`    | Close all split windows except the current one |
-| `<Leader>sr` | `<C-w>r`    | Rotate split windows               |
+| Keybinding    | Action        | Description                                        |
+|---------------|---------------|----------------------------------------------------|
+| `<Leader>sv`  | `:vsp<CR>`    | Split window vertically                            |
+| `<Leader>sh`  | `:sp<CR>`     | Split window horizontally                          |
+| `<Leader>sc`  | `<C-w>c`      | Close the current split window                     |
+| `<Leader>so`  | `<C-w>o`      | Close all split windows except the current one     |
+| `<Leader>sr`  | `<C-w>r`      | Rotate split windows                               |
 
 **Usage:**
 - Use `<Space>sv` to create a vertical split.
@@ -81,12 +81,12 @@ git clone https://github.com/9manhasan/nvim.git "${XDG_CONFIG_HOME:-$HOME/.confi
 
 ### Tab Management
 
-| Keybinding | Action        | Description                        |
-|------------|---------------|------------------------------------|
-| `<Leader>tn` | `:tabnew<CR>` | Open a new tab                     |
-| `<Leader>to` | `:tabonly<CR>`| Close all other tabs               |
-| `<Leader>tc` | `:tabclose<CR>` | Close the current tab             |
-| `<Leader>tm` | `:tabmove<CR>` | Move the current tab               |
+| Keybinding    | Action          | Description                        |
+|---------------|------------------|------------------------------------|
+| `<Leader>tn`  | `:tabnew<CR>`    | Open a new tab                     |
+| `<Leader>to`  | `:tabonly<CR>`   | Close all other tabs               |
+| `<Leader>tc`  | `:tabclose<CR>`  | Close the current tab              |
+| `<Leader>tm`  | `:tabmove<CR>`   | Move the current tab               |
 
 **Usage:**
 - `<Space>tn` creates a new tab.
@@ -104,11 +104,11 @@ git clone https://github.com/9manhasan/nvim.git "${XDG_CONFIG_HOME:-$HOME/.confi
 
 ### Movement
 
-| Keybinding | Action        | Description                                |
-|------------|---------------|--------------------------------------------|
-| `<C-d>`    | `<C-d>zz`     | Scroll down half a page and center the cursor |
-| `<C-u>`    | `<C-u>zz`     | Scroll up half a page and center the cursor   |
-| `n`        | `nzzzv`       | Go to next search result and center the view |
+| Keybinding | Action        | Description                                      |
+|------------|---------------|--------------------------------------------------|
+| `<C-d>`    | `<C-d>zz`     | Scroll down half a page and center the cursor    |
+| `<C-u>`    | `<C-u>zz`     | Scroll up half a page and center the cursor      |
+| `n`        | `nzzzv`       | Go to next search result and center the view     |
 | `N`        | `Nzzzv`       | Go to previous search result and center the view |
 
 **Usage:**
@@ -119,30 +119,33 @@ git clone https://github.com/9manhasan/nvim.git "${XDG_CONFIG_HOME:-$HOME/.confi
 
 | Keybinding | Action         | Description                                 |
 |------------|----------------|---------------------------------------------|
-| `<left>`   | Display message | Reminds you to use 'h' for left movement   |
-| `<right>`  | Display message | Reminds you to use 'l' for right movement  |
-| `<up>`     | Display message | Reminds you to use 'k' for upward movement |
-| `<down>`   | Display message | Reminds you to use 'j' for downward movement |
+| `<left>`   | Display message | Reminds you to use 'h' for left movement    |
+| `<right>`  | Display message | Reminds you to use 'l' for right movement   |
+| `<up>`     | Display message | Reminds you to use 'k' for upward movement  |
+| `<down>`   | Display message | Reminds you to use 'j' for downward movement|
 
 **Usage:** These keybindings are designed to help you break the habit of using arrow keys and encourage using h, j, k, l for navigation in normal mode.
 
-### Additional Notes
+## Additional Features
 
-- The configuration includes highlighting of yanked (copied) text for visual feedback.
-- The color scheme is set to "tokyonight". You can change this in the configuration if desired.
-- Case-insensitive searching is enabled by default, but becomes case-sensitive if you include capital letters in your search term.
-- The configuration uses relative line numbers, which can be helpful for quick navigation.
+- **Highlighted Yanks**: When you yank (copy) text, it will be briefly highlighted for visual feedback.
+- **Color Scheme**: The configuration uses the "tokyonight" color scheme. You can change this in the configuration if desired.
+- **Smart Case Search**: Searching is case-insensitive by default, but becomes case-sensitive if you include capital letters in your search term.
+- **Relative Line Numbers**: The configuration uses relative line numbers, which can be helpful for quick navigation.
 
-**Tip for Newcomers:**
+## Tips for Newcomers
+
 1. Start by mastering the basic movement keys (h, j, k, l) and the leader key commands.
 2. Gradually incorporate Telescope commands for efficient file navigation.
 3. Experiment with window splits and tabs to find your preferred workflow.
 4. Don't hesitate to customize these keybindings to suit your needs!
 
+## Customization
+
+Feel free to adjust the keybindings and settings according to your preferences and workflow. The configuration files are located in your Neovim config directory (`~/.config/nvim` on most systems).
+
 ---
 
-Feel free to adjust the keybindings and settings according to your preferences and workflow. Happy editing!
+For updates and more information, follow [@9manhasan_](https://twitter.com/9manhasan_) on Twitter.
 
----
-
-Follow me on Twitter: [@9manhasan_](https://twitter.com/9manhasan_)
+Happy editing!
