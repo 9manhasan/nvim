@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 
 -- Basic settings
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 vim.opt.clipboard = "unnamedplus"
@@ -22,17 +23,19 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
+  end,
+})
+
 -- Keymaps
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<CR>")
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
--- highlight_yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
-  end,
-})
+
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -48,6 +51,34 @@ vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>")
 
 -- LazyGit
 vim.keymap.set("n", "<Leader>lg", ":LazyGit<CR>")
+
+-- Split management
+vim.keymap.set("n", "<Leader>sv", ":vsp<CR>", { desc = "Split vertically" })
+vim.keymap.set("n", "<Leader>sh", ":sp<CR>", { desc = "Split horizontally" })
+vim.keymap.set("n", "<Leader>sc", "<C-w>c", { desc = "Close current split" })
+vim.keymap.set("n", "<Leader>so", "<C-w>o", { desc = "Close other splits" })
+vim.keymap.set("n", "<Leader>sr", "<C-w>r", { desc = "Rotate splits" })
+
+-- Tab management
+vim.keymap.set("n", "<Leader>tn", ":tabnew<CR>", { desc = "New tab" })
+vim.keymap.set("n", "<Leader>to", ":tabonly<CR>", { desc = "Close other tabs" })
+vim.keymap.set("n", "<Leader>tc", ":tabclose<CR>", { desc = "Close current tab" })
+vim.keymap.set("n", "<Leader>tm", ":tabmove<CR>", { desc = "Move current tab" })
+
+-- Terminal
+vim.keymap.set("n", "<Leader>t", ":term<CR>", { desc = "Open terminal" })
+
+-- Movement
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result and center" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result and center" })
+
+-- Disable arrow keys
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move left!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move right!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move up!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move down!"<CR>')
 
 -- Plugin setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -100,6 +131,20 @@ require("lazy").setup({
         highlight = { enable = true },
         indent = { enable = true },
       })
+    end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local telescope = require("telescope")
+      telescope.setup()
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Search files" })
+      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search by grep" })
+      vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Search buffers" })
+      vim.keymap.set("n", "<leader>p", builtin.git_files, { desc = "Search project" })
     end,
   },
   -- LSP Support
@@ -169,18 +214,14 @@ require("lazy").setup({
         settings = {
           Lua = {
             runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
               version = "LuaJIT",
             },
             diagnostics = {
-              -- Get the language server to recognize the `vim` global
               globals = { "vim" },
             },
             workspace = {
-              -- Make the server aware of Neovim runtime files
               library = vim.api.nvim_get_runtime_file("", true),
             },
-            -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
               enable = false,
             },
@@ -218,4 +259,4 @@ require("lazy").setup({
       })
     end,
   },
-}
+})
